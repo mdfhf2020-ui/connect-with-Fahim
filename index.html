@@ -41,14 +41,24 @@ body {
     transform: translateY(-5px);
 }
 
+/* প্রোফাইল ফটোতে নীল বর্ডার যোগ করা হয়েছে */
 .profile-img {
     width: 160px;
     height: 160px;
     border-radius: 50%;
     object-fit: cover;
-    border: 4px solid white;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    /* ৪ পিক্সেল সলিড নীল বর্ডার */
+    border: 4px solid #2563eb; 
+    padding: 5px; /* বর্ডার এবং ছবির মাঝে সামান্য গ্যাপের জন্য */
+    background: white;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
     margin-bottom: 20px;
+    transition: 0.3s;
+}
+
+.profile-card:hover .profile-img {
+    border-color: #1d4ed8;
+    transform: scale(1.02);
 }
 
 h1 {
@@ -136,7 +146,7 @@ h1 {
 .facebook { background: #1877F2; }
 .email { background: #ea4335; }
 
-/* --- Footer (Connect Note) Fix --- */
+/* মোবাইল অ্যাডজাস্টমেন্ট (ফুটার ফিক্সসহ) */
 .connect-note {
     margin-top: 30px;
     font-size: 13px;
@@ -148,28 +158,30 @@ h1 {
     border-top: 1px dashed #cbd5e1;
     padding-top: 15px;
     width: 100%;
-    overflow: hidden; /* টেক্সট বাইরে যাওয়া রোধ করে */
 }
 
 .connect-note i {
     color: #2563eb;
-    flex-shrink: 0; /* আইকন চ্যাপ্টা হওয়া বন্ধ করে */
+    flex-shrink: 0;
 }
 
-.connect-note span {
-    line-height: 1.4;
-    display: inline-block;
-}
-
-/* --- Mobile Responsive Fixes --- */
-@media (max-width: 440px) {
+@media (max-width: 480px) {
     .profile-card {
-        padding: 30px 15px; /* প্যাডিং কমানো হয়েছে */
-        margin: 10px;
+        padding: 30px 20px;
+        max-width: 95%;
     }
 
     h1 {
-        font-size: 26px;
+        font-size: 24px;
+    }
+
+    .profile-img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .contact-row {
+        gap: 12px;
     }
 
     .icon-btn {
@@ -178,26 +190,20 @@ h1 {
         font-size: 20px;
     }
 
-    .contact-row {
-        gap: 12px;
-    }
-
     .connect-note {
-        font-size: 11px; /* টেক্সট ছোট করা হয়েছে যাতে এক লাইনে আটে */
-        padding-top: 12px;
-        gap: 5px;
+        font-size: 11px;
+        flex-wrap: nowrap; /* লেখা ও আইকন এক লাইনে রাখার চেষ্টা করবে */
     }
 }
 
-@media (max-width: 360px) {
+/* ছোট মোবাইলের জন্য অতিরিক্ত সুরক্ষা */
+@media (max-width: 380px) {
     .connect-note {
-        flex-wrap: wrap; /* আরও ছোট স্ক্রিনে আইকন ও টেক্সট ভেঙে নিচে আসবে */
         font-size: 10px;
+        gap: 5px;
     }
-    
-    .info-item {
-        font-size: 13px;
-        padding: 8px 12px;
+    .connect-note span {
+        text-align: center;
     }
 }
 </style>
@@ -207,62 +213,57 @@ h1 {
 
 <div class="profile-card">
 
-<img src="1.png" class="profile-img" alt="Profile Image">
+    <img src="1.png" class="profile-img" alt="Farhan Hasin Fahim">
 
-<h1>Farhan Hasin Fahim</h1>
+    <h1>Farhan Hasin Fahim</h1>
 
-<div class="headline">
-<i class="fa-regular fa-circle-check"></i>
-ETE · RUET
-</div>
-
-<div class="location">
-<i class="fa-solid fa-location-dot"></i>
-Chilahati, Domar, Nilphamari
-</div>
-
-<div class="divider"></div>
-
-<div class="info">
-    <div class="info-item">
-        <i class="fa-solid fa-microchip"></i>
-        <span>Student of <b>ETE, RUET</b></span>
+    <div class="headline">
+        <i class="fa-regular fa-circle-check"></i>
+        ETE · RUET
     </div>
 
-    <div class="info-item">
-        <i class="fa-solid fa-building-columns"></i>
-        <span><b>Rangpur Govt College</b></span>
+    <div class="location">
+        <i class="fa-solid fa-location-dot"></i>
+        Chilahati, Domar, Nilphamari
     </div>
 
-    <div class="info-item">
-        <i class="fa-solid fa-school"></i>
-        <span><b>Chilahati Merchants High School</b></span>
+    <div class="divider"></div>
+
+    <div class="info">
+        <div class="info-item">
+            <i class="fa-solid fa-microchip"></i>
+            <span>Student of <b>ETE, RUET</b></span>
+        </div>
+        <div class="info-item">
+            <i class="fa-solid fa-building-columns"></i>
+            <span><b>Rangpur Govt College</b></span>
+        </div>
+        <div class="info-item">
+            <i class="fa-solid fa-school"></i>
+            <span><b>Chilahati Merchants High School</b></span>
+        </div>
     </div>
-</div>
 
-<div class="contact-row">
-    <a href="tel:+8801712345678" class="icon-btn phone">
-        <i class="fa-solid fa-phone"></i>
-    </a>
+    <div class="contact-row">
+        <a href="tel:+8801712345678" class="icon-btn phone">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <a href="https://wa.me/8801767207999" class="icon-btn whatsapp" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="https://www.facebook.com/fhf2022/" class="icon-btn facebook" target="_blank">
+            <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="mailto:mdfhf2020@gmail.com" class="icon-btn email">
+            <i class="fa-solid fa-envelope"></i>
+        </a>
+    </div>
 
-    <a href="https://wa.me/8801767207999" class="icon-btn whatsapp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-    <a href="https://www.facebook.com/fhf2022/" class="icon-btn facebook">
-        <i class="fa-brands fa-facebook-f"></i>
-    </a>
-
-    <a href="mailto:mdfhf2020@gmail.com" class="icon-btn email">
-        <i class="fa-solid fa-envelope"></i>
-    </a>
-</div>
-
-<div class="connect-note">
-    <i class="fa-solid fa-box-archive"></i>
-    <span>Collecting the past, connecting the future.</span>
-    <i class="fa-solid fa-book-open"></i>
-</div>
+    <div class="connect-note">
+        <i class="fa-solid fa-box-archive"></i>
+        <span>Collecting the past, connecting the future.</span>
+        <i class="fa-solid fa-book-open"></i>
+    </div>
 
 </div>
 
